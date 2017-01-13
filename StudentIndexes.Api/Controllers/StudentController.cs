@@ -19,6 +19,7 @@ namespace StudentIndexes.Api.Controllers
         {
             _studentRepository = studentRepository;
         }
+        [AllowAnonymous]
         [HttpGet, Route("")]
         [ResponseType(typeof(IEnumerable<StudentDto>))]
         public IHttpActionResult Get()

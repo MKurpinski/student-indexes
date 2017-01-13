@@ -7,7 +7,8 @@ namespace StudentIndexes.Domain
     public class StudentContext : IdentityDbContext<IdentityUser>
     {
         public StudentContext()
-            : base("StudentContext") { }
+            : base("StudentContext", throwIfV1Schema: false) { }
         public IDbSet<StudentModel> Students { get; set; }
+        public IDbSet<GradeModel> Grades { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using StudentIndexes.Domain.Models;
 using StudentIndexes.Domain.Repositories.Interfaces;
@@ -43,6 +44,10 @@ namespace StudentIndexes.Domain.Repositories
             dbEntry.Index = student.Index;
             dbEntry.Name = student.Name;
             dbEntry.Surname = student.Surname;
+            for (var index = 0; index < dbEntry.Grades.Count; index++)
+            {
+                _context.Grades.Remove(dbEntry.Grades[index]);
+            }
             dbEntry.Grades = student.Grades;
             _context.SaveChanges();
         }
